@@ -31,6 +31,33 @@ class FixedTokenTest extends TestCase
     }
 
     /**
+     * @dataProvider tokenAndDataProvider
+     */
+    public function testAddingDataOneByOne($token, $data)
+    {
+        $fixedToken = FixedToken::create($this->tokenSecret);
+
+        foreach ($data as $key => $value) {
+            $fixedToken->addData($key, $value);
+        }
+
+        $this->assertTrue($fixedToken->verify($token));
+    }
+
+    /**
+     * @dataProvider tokenAndDataProvider
+     */
+    public function testAddingDataArrayAndValueThrowsException($token, $data)
+    {
+        $this->expectException('InvalidArgumentException');
+
+        $this->assertTrue(FixedToken::create($this->tokenSecret)
+            ->addData($data, 'a-value')
+            ->verify($token)
+        );
+    }
+
+    /**
      * Test to see if generating before adding public data throws a RuntimeException
      */
     public function testPrematurGeneratingThrowsException()
