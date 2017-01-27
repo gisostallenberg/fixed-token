@@ -1,0 +1,25 @@
+{
+    "name": "gisostallenberg/fixed-token",
+    "description": "Generates and verifies tokens based on a secret and some public data",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "require": {},
+    "authors": [
+        {
+            "name": "Giso Stallenberg",
+            "email": "gisostallenberg@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GisoStallenberg\\FixedToken\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GisoStallenberg\\FixedToken\\Tests\\": "tests/"
+        }
+    }
+}
