@@ -26,17 +26,25 @@ class FixedToken
 
     /**
      * Create a new FixedToken class.
+     *
+     * @param string $tokenSecret
      */
     public function __construct($tokenSecret)
     {
         $this->tokenSecret = $tokenSecret;
     }
+
+    /**
+     * Create a new FixedToken class in a static way.
+     *
+     * @param string $tokenSecret
+     */
     public static function create($tokenSecret)
     {
         return new static($tokenSecret);
     }
 
-        /**
+    /**
      * Adds public info to use to generate and verify the token.
      *
      * @param mixed $key
@@ -76,7 +84,7 @@ class FixedToken
 
         $publicBase = http_build_query($this->data);
 
-        return md5($this->tokenSecret . $publicBase);
+        return sha1($this->tokenSecret.$publicBase);
     }
 
     /**

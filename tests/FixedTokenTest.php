@@ -1,19 +1,19 @@
 <?php
 
-namespace GisoStallenberg\FixedToken\Tests;
+namespace GisoStallenberg\FixedToken\tests;
 
 use GisoStallenberg\FixedToken\FixedToken;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test the fixed token library
+ * Test the fixed token library.
  *
  * @author Giso Stallenberg
  */
 class FixedTokenTest extends TestCase
 {
     /**
-     * Secret used for tests
+     * Secret used for tests.
      *
      * @var string
      */
@@ -58,7 +58,7 @@ class FixedTokenTest extends TestCase
     }
 
     /**
-     * Test to see if generating before adding public data throws a RuntimeException
+     * Test to see if generating before adding public data throws a RuntimeException.
      */
     public function testPrematurGeneratingThrowsException()
     {
@@ -69,7 +69,7 @@ class FixedTokenTest extends TestCase
     }
 
     /**
-     * Test to see if verifying before adding public data throws a RuntimeException
+     * Test to see if verifying before adding public data throws a RuntimeException.
      */
     public function testPrematurVerifyingThrowsException()
     {
@@ -80,7 +80,7 @@ class FixedTokenTest extends TestCase
     }
 
     /**
-     * Test to see if verifying wrong token fails
+     * Test to see if verifying wrong token fails.
      *
      * @dataProvider tokenAndDataProvider
      */
@@ -88,22 +88,22 @@ class FixedTokenTest extends TestCase
     {
         $this->assertFalse(FixedToken::create($this->tokenSecret)
             ->addData($data)
-            ->verify('5d2d331acb615eac02ea6747caaaae11')
+            ->verify('e30c8e120338e6a8e4c99c1e812f86fe58e55208')
         );
     }
 
     /**
-     * Provide some data
+     * Provide some data.
      *
      * @return array
      */
     public function tokenAndDataProvider()
     {
         return array(
-            array('c8cb9fa42ce54077797c234ed8c3e654', array(
+            array('fdc2f8672dcb9df6b076ae68dd0a107c3d247200', array(
                 'username' => 'giso',
             )),
-            array('0dc827ce743b33e375a6965391c3ef81', array(
+            array('f01758b88eb3761b9c806d637259fe514fb0a9f2', array(
                 'id' => 1,
                 'foo' => 'bar',
             )),
